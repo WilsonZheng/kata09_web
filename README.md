@@ -2,9 +2,13 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a8373ec2-9228-492b-bfb0-3c0d4536188c/deploy-status)](https://app.netlify.com/sites/kata-checkout/deploys)
 
-A simple checkout to calculate the total cost in shopping cart. Adding item will call backend API to do calculation instantly.
+A simple checkout to calculate the total cost in shopping cart. Adding item will call backend API to do calculation instantly. Auto deployment on master branch: https://kata-checkout.netlify.app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Third-party Libraries Used
+
+`material-ui`, `react-query`, `axios`
 
 ## Available Scripts
 

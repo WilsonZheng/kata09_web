@@ -9,7 +9,7 @@ export const CartProvider = ({ children }) => {
         setCart((currentCart) => [...currentCart, item]);
     };
 
-    const clearCart = (item) => {
+    const clearCart = () => {
         setCart(() => []);
     };
 

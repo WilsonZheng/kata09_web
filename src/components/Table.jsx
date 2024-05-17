@@ -28,6 +28,8 @@ const TableComponent = () => {
         () => fetchTotal(cart),
         {
             enabled: !!cart.length,
+            //cacheTime: 5000,
+            //refetchInterval: 10000,
         }
     );
 
