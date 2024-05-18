@@ -78,7 +78,7 @@ const TableComponent = () => {
                 ) : isError ? (
                     <p>Error fetching total</p>
                 ) : (
-                    <p>Total: {data ? data.total : 0}</p>
+                    <p>Total($): {data ? data.total : 0}</p>
                 )}
             </div>
             <div style={{ margin: "10px" }}>
