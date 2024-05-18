@@ -18,6 +18,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "cy:run": "cypress run --spec cypress/e2e/spec.cy.js",
+    "cy:open": "cypress open",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -42,6 +44,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "cypress": "^13.9.0",
+    "eslint-plugin-cypress": "^3.2.0"
   }
 }
