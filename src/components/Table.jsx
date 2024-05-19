@@ -10,35 +10,17 @@ import {
     Paper,
     Button,
 } from "@mui/material";
-import { useQuery } from "react-query";
-import { fetchTotal } from "../queries/fetchTotal.js";
-
-const items = [
-    { id: "A", unitPrice: "$0.5", specialPrice: "3 for $1.3" },
-    { id: "B", unitPrice: "$0.3", specialPrice: "2 for $0.45" },
-    { id: "C", unitPrice: "$0.2", specialPrice: null },
-    { id: "D", unitPrice: "$0.15", specialPrice: null },
-];
-
+import { useCheckout } from "../hooks/UseCheckout.js";
+import { ItemRow } from "./ItemRow";
+import { Total } from "./Total.jsx";
+import "./TableComponent.css";
+import { Products } from "../services/GetProducts.js";
 const TableComponent = () => {
     const { cart, addToCart, clearCart } = useContext(CartContext);
-
-    // MVVM
-    const { data, isLoading, isError } = useQuery(
-        ["checkoutTotal", cart],
-        () => fetchTotal(cart),
-        {
-            enabled: !!cart.length,
-            cacheTime: 60 * 1000, // 1 min
-            refetchInterval: 5 * 60 * 1000, // 5 mins
-        }
-    );
+    const { data, isLoading, isError } = useCheckout(cart);
 
     return (
-        <TableContainer
-            component={Paper}
-            style={{ maxWidth: "500px", margin: "50px" }}
-        >
+        <TableContainer component={Paper} className="tableContainer">
             <Table>
                 <TableHead>
                     <TableRow>
@@ -49,45 +31,19 @@ const TableComponent = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {items.map((item) => (
-                        <TableRow key={item.id}>
-                            <TableCell component="th" scope="row">
-                                {item.id}
-                            </TableCell>
-                            <TableCell align="left">{item.unitPrice}</TableCell>
-                            <TableCell align="left">
-                                {item.specialPrice}
-                            </TableCell>
-                            <TableCell align="left">
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={() => addToCart(item.id)}
-                                >
-                                    Add
-                                </Button>
-                            </TableCell>
-                        </TableRow>
+                    {Products.map((item) => (
+                        <ItemRow
+                            key={item.id}
+                            item={item}
+                            addToCart={addToCart}
+                        />
                     ))}
                 </TableBody>
             </Table>
-            <div style={{ margin: "10px" }}>Items in the cart: {cart}</div>
-
-            <div style={{ margin: "10px" }}>
-                {isLoading ? (
-                    <p>Loading...</p>
-                ) : isError ? (
-                    <p>Error fetching total</p>
-                ) : (
-                    <p>Total($): {data ? data.total : 0}</p>
-                )}
-            </div>
-            <div style={{ margin: "10px" }}>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => clearCart()}
-                >
+            <div className="infoText">Items in the cart: {cart}</div>
+            <Total isLoading={isLoading} isError={isError} data={data} />
+            <div className="infoText">
+                <Button variant="contained" color="primary" onClick={clearCart}>
                     Clear
                 </Button>
             </div>

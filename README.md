@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Third-party Libraries Used
 
-`material-ui`, `react-query`, `axios`
+`material-ui`, `react-query`, `axios`, `Cypress`
 
 ## Available Scripts
 
@@ -36,3 +36,12 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Improvement to do
+
+-   Define model/interface for checkout API response. Handle unexpected data structure returned such as display an error page.
+-   Split table component into small subcomponents such as table row component `TableRowComponent`.
+-   Extract inline stlying to separate css file such as using styled-components for better maintainability and reusability.
+-   Optimize Rendering: Use the useCallback hook to memoize callback functions passed to child components to prevent unnecessary re-renders.
+-   Migrate Javascript to Typesciption which enabling better dev experience with type safe check.
+-   Use MVVM design pattern.
