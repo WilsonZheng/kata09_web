@@ -23,6 +23,7 @@ const items = [
 const TableComponent = () => {
     const { cart, addToCart, clearCart } = useContext(CartContext);
 
+    // MVVM
     const { data, isLoading, isError } = useQuery(
         ["checkoutTotal", cart],
         () => fetchTotal(cart),
