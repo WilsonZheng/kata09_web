@@ -13,7 +13,7 @@ import {
 import { useCheckout } from "../hooks/UseCheckout.js";
 import { ItemRow } from "./ItemRow";
 import { Total } from "./Total.jsx";
-import "./TableComponent.css";
+import "./Table.css";
 import { Products } from "../services/GetProducts.js";
 const TableComponent = () => {
     const { cart, addToCart, clearCart } = useContext(CartContext);
